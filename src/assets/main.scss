@@ -4,8 +4,22 @@
     min-height: inherit;
     width: 100%;
     background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
 }
 
 a {
     text-decoration: none;
+}
+
+ul,
+ol {
+    li {
+        list-style: none;
+    }
+}
+
+button,
+a {
+    cursor: pointer;
 }
