@@ -1,0 +1,11 @@
+@import "./base.scss";
+
+#app {
+    min-height: inherit;
+    width: 100%;
+    background-color: var(--color-background);
+}
+
+a {
+    text-decoration: none;
+}
