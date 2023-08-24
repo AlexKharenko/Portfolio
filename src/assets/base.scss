@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 :root {
+    --nav-bar-height: 58px;
     color-scheme: light dark;
 
     --white: #ffffff;
@@ -64,7 +65,7 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100dvh;
     color: var(--color-text);
     background: var(--color-background);
     font-family: "Roboto", sans-serif;
