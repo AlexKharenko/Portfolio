@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 :root {
+    color-scheme: light dark;
+
     --white: #ffffff;
     --white-soft: #f8f8f8;
     --white-mute: #f2f2f2;
@@ -32,6 +34,7 @@
 
     --color-heading: var(--text-light-1);
     --color-text: var(--text-light-1);
+    --color-text-2: var(--text-light-2);
 
     --section-gap: 160px;
 }
@@ -47,6 +50,7 @@
 
         --color-heading: var(--text-dark-1);
         --color-text: var(--text-dark-2);
+        --color-text-2: var(--text-dark-1);
     }
 }
 
@@ -63,9 +67,6 @@ body {
     min-height: 100vh;
     color: var(--color-text);
     background: var(--color-background);
-    transition:
-        color 0.5s,
-        background-color 0.5s;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     text-rendering: optimizeLegibility;
