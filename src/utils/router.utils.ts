@@ -26,5 +26,5 @@ export const handleGetPageStatus = async (to: RouteLocationNormalized) => {
 };
 
 export const setTitle = (to: RouteLocationNormalized) => {
-    window.document.title = to.meta.title;
+    window.document.title = `${to.meta.title} | AlexKharenko`;
 };

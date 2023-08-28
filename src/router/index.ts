@@ -38,9 +38,11 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to: RouteLocationNormalized) => {
-    setTitle(to);
     requiresLoading(to);
     return handleGetPageStatus(to);
+});
+router.afterEach((to: RouteLocationNormalized) => {
+    setTitle(to);
 });
 
 export default router;
