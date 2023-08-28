@@ -10,8 +10,13 @@
             <li class="nav-bar-list-item links">
                 <RouterLink to="/about"><span>About</span></RouterLink>
             </li>
-            <li v-if="!isAuthenticated" class="nav-bar-list-item links">
+            <li v-if="!authStore.isAuthenticated" class="nav-bar-list-item links">
                 <RouterLink to="/signin"><span>SignIn</span></RouterLink>
+            </li>
+            <li v-else class="nav-bar-list-item buttons">
+                <button class="list-btn signout-btn" @click="authStore.signOut">
+                    <span>SignOut</span>
+                </button>
             </li>
         </ul>
     </nav>
@@ -21,7 +26,7 @@
 import { useAuthStore } from "@/stores/auth.store";
 import { RouterLink } from "vue-router";
 
-const { isAuthenticated } = useAuthStore();
+const authStore = useAuthStore();
 </script>
 
 <style scoped lang="scss">
@@ -61,36 +66,46 @@ const { isAuthenticated } = useAuthStore();
             &.links {
                 a {
                     outline: none;
-                    span {
-                        padding: 0 0.1rem;
-                        color: var(--color-text);
-                        @media (prefers-color-scheme: dark) {
-                            color: var(--color-text-2);
-                        }
-                    }
-                    &.router-link-active span {
-                        color: var(--color-text-2);
-                        @media (prefers-color-scheme: dark) {
-                            color: var(--color-text);
-                        }
-                    }
                 }
-                &::after {
-                    content: "";
-                    display: block;
-                    height: 2px;
-                    width: 0;
-                    background-color: var(--color-text);
-                    transition: width 0.3s ease-in-out;
+            }
 
-                    @media (prefers-color-scheme: dark) {
-                        background-color: var(--color-text-2);
-                    }
+            &.buttons {
+                button {
+                    outline: none;
+                    background: none;
+                    border: none;
                 }
-                &:hover:not(:has(a.router-link-active))::after,
-                &:focus-within::after {
-                    width: 100%;
+            }
+
+            span {
+                padding: 0 0.1rem;
+                color: var(--color-text);
+                @media (prefers-color-scheme: dark) {
+                    color: var(--color-text-2);
                 }
+            }
+            &.router-link-active span {
+                color: var(--color-text-2);
+                @media (prefers-color-scheme: dark) {
+                    color: var(--color-text);
+                }
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 0;
+                background-color: var(--color-text);
+                transition: width 0.3s ease-in-out;
+
+                @media (prefers-color-scheme: dark) {
+                    background-color: var(--color-text-2);
+                }
+            }
+            &:hover:not(:has(a.router-link-active))::after,
+            &:focus-visible::after {
+                width: 100%;
             }
         }
     }
