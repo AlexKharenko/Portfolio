@@ -3,16 +3,15 @@ import type { RouteLocationNormalized } from "vue-router";
 import { getCurrUser } from "./firebase.auth";
 
 export const requiresLoading = (to: RouteLocationNormalized) => {
-    const { setLoadingState } = useGlobalStore();
-    if (to.matched.some(record => record.meta.requiresLoading)) {
-        setLoadingState(true);
+    const globalState = useGlobalStore();
+    if (to.meta.requiresLoading) {
+        globalState.setLoadingState(true);
     } else {
-        setLoadingState(false);
+        globalState.setLoadingState(false);
     }
 };
 
 export const handleGetPageStatus = async (to: RouteLocationNormalized) => {
-    if (!to.meta.getStatus) return;
     const user = await getCurrUser();
     if (to.meta.getStatus === "requiresAuth") {
         if (user) {
