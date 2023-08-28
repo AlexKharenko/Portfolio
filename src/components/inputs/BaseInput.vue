@@ -46,6 +46,10 @@ const updateModelValue = (event: Event) => {
         padding: 0.2rem 0.3rem;
         font-size: 1.075em;
         line-height: 1.1em;
+        &:-webkit-autofill,
+        &:autofill {
+            -webkit-background-clip: text;
+        }
 
         &:focus {
             transition: all 0.2s ease-in-out;
