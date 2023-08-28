@@ -23,13 +23,13 @@ const router = createRouter({
                 title: "Admin SignIn",
                 getStatus: "onlyUnAuth",
             },
-            component: () => import("../views/AboutView.vue"),
+            component: () => import("../views/SignInView.vue"),
         },
         {
             path: "/about",
             name: "about",
             meta: {
-                title: "Home",
+                title: "About",
                 getStatus: "requiresAuth",
             },
             component: () => import("../views/AboutView.vue"),
