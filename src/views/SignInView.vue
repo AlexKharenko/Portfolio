@@ -56,7 +56,7 @@ const onSubmit = handleSubmit(async () => {
 
     if (!response.success) return (formError.value = response.message);
 
-    return router.push({ path: "/" });
+    return router.push({ path: "/admin" });
 });
 </script>
 
