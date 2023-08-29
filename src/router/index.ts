@@ -10,7 +10,7 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            name: "home",
+            name: "Home",
             meta: {
                 title: "Home",
             },
@@ -26,8 +26,35 @@ const router = createRouter({
             component: () => import("../views/SignInView.vue"),
         },
         {
+            path: "/admin",
+            meta: {
+                title: "Admin Dashboard",
+                getStatus: "requiresAuth",
+            },
+            children: [
+                {
+                    path: "",
+                    name: "Admin Dashboard",
+                    meta: {
+                        title: "Admin Dashboard",
+                    },
+                    component: () => import("../views/AboutView.vue"),
+                },
+                {
+                    path: "tags",
+                    name: "Tags | Admin Dashboard",
+                    meta: {
+                        title: "Admin Dashboard",
+                    },
+                    component: () => import("../views/AboutView.vue"),
+                },
+            ],
+
+            component: () => import("../views/AdminView.vue"),
+        },
+        {
             path: "/about",
-            name: "about",
+            name: "About",
             meta: {
                 title: "About",
                 getStatus: "requiresAuth",

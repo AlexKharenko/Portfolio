@@ -13,7 +13,10 @@
             <li v-if="!authStore.isAuthenticated" class="nav-bar-list-item links">
                 <RouterLink to="/signin"><span>SignIn</span></RouterLink>
             </li>
-            <li v-else class="nav-bar-list-item buttons">
+            <li v-if="authStore.isAuthenticated" class="nav-bar-list-item links">
+                <RouterLink to="/admin"><span>Admin</span></RouterLink>
+            </li>
+            <li v-if="authStore.isAuthenticated" class="nav-bar-list-item buttons">
                 <button class="list-btn signout-btn" @click="authStore.signOut">
                     <span>SignOut</span>
                 </button>
