@@ -8,6 +8,9 @@
     --white-soft: #f8f8f8;
     --white-mute: #f2f2f2;
 
+    --grey-soft: #868585;
+    --grey-muted: #8d8c8c;
+
     --black: #181818;
     --black-soft: #222222;
     --black-mute: #282828;
@@ -39,6 +42,7 @@
     --color-heading: var(--text-light-1);
     --color-text: var(--text-light-1);
     --color-text-2: var(--text-light-2);
+    --color-text-muted: var(--grey-soft);
 
     --color-success: var(--green-light);
     --color-danger: var(--red-light);
@@ -56,6 +60,7 @@
         --color-heading: var(--text-dark-1);
         --color-text: var(--text-dark-2);
         --color-text-2: var(--text-dark-1);
+        --color-text-muted: var(--grey-muted);
     }
 }
 
