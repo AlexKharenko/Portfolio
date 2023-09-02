@@ -7,8 +7,6 @@
 
 <script setup lang="ts">
 import AdminNavBar from "@/components/AdminNavBar.vue";
-
-// import { RouterView } from "vue-router";
 </script>
 
 <style lang="scss" scoped>
