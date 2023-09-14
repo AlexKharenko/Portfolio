@@ -62,7 +62,7 @@
                     </div>
                     <span class="list-item-title">Tags</span>
                 </RouterLink>
-                <button class="add-btn">
+                <button class="add-btn" @click="openCreateDialog('tag')">
                     <PlusIcon />
                 </button>
             </li>
@@ -102,7 +102,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from "@/stores/auth.store";
-import { ref } from "vue";
+import { ref, inject, type Ref } from "vue";
 import { useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
 
@@ -117,6 +117,10 @@ import ExperienceIcon from "./icons/AdminPanel/ExperienceIcon.vue";
 import SkillsIcon from "./icons/AdminPanel/SkillsIcon.vue";
 import DashBoardIcon from "./icons/AdminPanel/DashBoardIcon.vue";
 
+import type CreateTagDialog from "@/components/dialogs/CreateTagDialog.vue";
+
+const createTagDialogRef = inject<Ref<InstanceType<typeof CreateTagDialog>>>("createTagDialogRef");
+
 const authStore = useAuthStore();
 const router = useRouter();
 
@@ -124,6 +128,14 @@ const navBarHiden = ref(false);
 
 const toggleNavBarHidenStatus = () => {
     navBarHiden.value = !navBarHiden.value;
+};
+
+const openCreateDialog = (name: string): void => {
+    switch (name) {
+        case "tag":
+            createTagDialogRef?.value.showDialog();
+            break;
+    }
 };
 
 const signOutHandle = async () => {
@@ -280,6 +292,10 @@ const signOutHandle = async () => {
             .add-btn {
                 margin-right: 0.4rem;
                 transition: background-color 0.2s ease-in-out;
+                svg {
+                    height: 50%;
+                    aspect-ratio: 1 / 1;
+                }
             }
 
             .feedback-count {
