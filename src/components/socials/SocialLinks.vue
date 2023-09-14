@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import LinkedInIcon from "@/components/icons/LinkedInIcon.vue";
-import InstagramIcon from "@/components//icons/InstagramIcon.vue";
-import GithubIcon from "@/components//icons/GithubIcon.vue";
+import LinkedInIcon from "@/components/icons/SocialMedia/LinkedInIcon.vue";
+import InstagramIcon from "@/components//icons/SocialMedia/InstagramIcon.vue";
+import GithubIcon from "@/components//icons/SocialMedia/GithubIcon.vue";
 import SocialItem from "./SocialItem.vue";
 </script>
 
