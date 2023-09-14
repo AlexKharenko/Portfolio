@@ -1,5 +1,10 @@
 @import "./base.scss";
 
+#dialogs {
+    position: fixed;
+    z-index: 10000;
+}
+
 #app {
     min-height: inherit;
     width: 100%;
