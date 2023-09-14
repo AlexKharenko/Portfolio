@@ -88,7 +88,7 @@ const onSubmit = handleSubmit(async () => {
             justify-content: center;
             flex: 1;
             max-width: 500px;
-            gap: 1.5rem;
+            gap: 1rem;
             .inputs-container {
                 display: flex;
                 flex-direction: column;

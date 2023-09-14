@@ -18,9 +18,7 @@ defineProps<PropsType>();
 <style lang="scss" scoped>
 .input-wrapper {
     position: relative;
-    margin-bottom: 1rem;
     .errors-block {
-        position: absolute;
         .validation-error {
             padding: 0.1rem 0;
             font-size: 0.85em;
