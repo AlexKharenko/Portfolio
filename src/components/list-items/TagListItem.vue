@@ -11,7 +11,7 @@
             <span class="projects-number">1</span>
         </div>
         <div class="controls-block">
-            <button class="admin-btn-control btn-edit-tag">
+            <button class="admin-btn-control btn-edit-tag" @click="$emit('edit', tagData.id)">
                 <PencilIcon />
             </button>
             <button class="admin-btn-control btn-delete-tag" @click="handleDeleteClick">
@@ -28,6 +28,10 @@ import TagIcon from "@/components/icons/AdminPanel/TagIcon.vue";
 import FolderIcon from "../icons/AdminPanel/FolderIcon.vue";
 import type { TagInterface } from "@/interfaces/tag.interface";
 import { deleteTag } from "@/utils/firebase-calls/tags.calls";
+import type { ConfirmDialog } from "vue-dialog-library";
+import { inject, type Ref } from "vue";
+
+const confirmDialogRef = inject<Ref<InstanceType<typeof ConfirmDialog>>>("confirmDialogRef");
 
 type PropsType = {
     tagData: TagInterface;
@@ -36,13 +40,14 @@ type PropsType = {
 type EmitsType = {
     (e: "delete", id: string): void;
     (e: "error", message: string): void;
+    (e: "edit", id: string): void;
 };
 
 const props = defineProps<PropsType>();
 const emits = defineEmits<EmitsType>();
 
 const handleDeleteClick = async (): Promise<void> => {
-    if (!confirm("Do you really want to delete")) {
+    if (!(await confirmDialogRef?.value.show("Do you really want to delete"))) {
         return;
     }
     const response = await deleteTag(props.tagData.id);
@@ -58,7 +63,7 @@ const handleDeleteClick = async (): Promise<void> => {
 .tags-list-item {
     padding: 0.4rem 1rem;
     display: grid;
-    grid-template-columns: 2fr 1fr auto;
+    grid-template-columns: minmax(110px, 2fr) 1fr auto;
     align-items: center;
     gap: 1rem;
     overflow: hidden;
