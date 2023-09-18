@@ -46,7 +46,7 @@ const router = createRouter({
                     meta: {
                         title: "Admin Dashboard",
                     },
-                    component: () => import("../views/AboutView.vue"),
+                    component: () => import("../views/AdminNestedViews/TagsView.vue"),
                 },
             ],
 
