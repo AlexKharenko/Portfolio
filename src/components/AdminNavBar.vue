@@ -117,7 +117,7 @@ import ExperienceIcon from "./icons/AdminPanel/ExperienceIcon.vue";
 import SkillsIcon from "./icons/AdminPanel/SkillsIcon.vue";
 import DashBoardIcon from "./icons/AdminPanel/DashBoardIcon.vue";
 
-import type CreateTagDialog from "@/components/dialogs/CreateTagDialog.vue";
+import type CreateTagDialog from "@/components/dialogs/tag/CreateTagDialog.vue";
 
 const createTagDialogRef = inject<Ref<InstanceType<typeof CreateTagDialog>>>("createTagDialogRef");
 
