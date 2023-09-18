@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, type RouteLocationNormalized } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+// import HomeView from "../views/HomeView.vue";
 import { handleGetPageStatus, requiresLoading, setTitle } from "@/utils/router.utils";
 
 const router = createRouter({
@@ -14,7 +14,7 @@ const router = createRouter({
             meta: {
                 title: "Home",
             },
-            component: HomeView,
+            component: () => import("../views/HomeView.vue"),
         },
         {
             path: "/signin",
