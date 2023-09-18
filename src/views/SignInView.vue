@@ -3,7 +3,6 @@
         <section class="sign-in-content">
             <h1 class="sign-in-heading">Admin Panel</h1>
             <form @submit.prevent="onSubmit" class="sign-in-form">
-                <p class="form-error" v-if="formError">{{ formError }}</p>
                 <div class="inputs-container">
                     <InputValidationWrapper :fieldValidationError="errors.email">
                         <BaseInput title="Email" v-model="email" />
@@ -37,11 +36,11 @@ import signInSchema from "@/schemas/signin.zod-schema";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { toTypedSchema } from "@vee-validate/zod";
+import { useToast } from "vue-toastification";
 
 const router = useRouter();
 
 const showPassword = ref(false);
-const formError = ref("");
 
 const { handleSubmit, errors } = useForm({
     initialValues: { email: "", password: "" },
@@ -50,11 +49,13 @@ const { handleSubmit, errors } = useForm({
 const { value: email } = useField<string>("email");
 const { value: password } = useField<string>("password");
 
+const toast = useToast();
+
 const onSubmit = handleSubmit(async () => {
     const { signIn } = useAuthStore();
     const response = await signIn(email.value, password.value);
 
-    if (!response.success) return (formError.value = response.message);
+    if (!response.success) return toast.error(response.message);
 
     return router.push({ path: "/admin" });
 });

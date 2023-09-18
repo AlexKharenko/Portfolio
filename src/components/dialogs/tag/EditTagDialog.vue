@@ -5,7 +5,7 @@
             <InputValidationWrapper :fieldValidationError="errors.tagName">
                 <DialogInput v-model="tagName" />
             </InputValidationWrapper>
-            <button type="submit">Submit</button>
+            <button type="submit" :disabled="isLoading">Submit</button>
         </form>
     </CustomDialog>
 </template>
@@ -18,13 +18,13 @@ import type { TagInterface } from "@/interfaces/tag.interface";
 import { editTag } from "@/utils/firebase-calls/tags.calls";
 
 import CustomDialogHeader from "@/components/dialogs/utils/CustomDialogHeader.vue";
-// import BaseInput from "@/components/inputs/BaseInput.vue";
 import DialogInput from "../utils/DialogInput.vue";
 import InputValidationWrapper from "@/components/validators/InputValidationWrapper.vue";
 
 import { toTypedSchema } from "@vee-validate/zod";
 import { useField, useForm } from "vee-validate";
 import createEditTagSchema from "@/schemas/createEditTag.zod-schema";
+import { useToast } from "vue-toastification";
 
 type PropsType = {
     onSuccessCb: (tagData: TagInterface) => void;
@@ -34,6 +34,7 @@ const customDialogRef = ref<InstanceType<typeof CustomDialog>>();
 const props = defineProps<PropsType>();
 
 const intialTag = ref<TagInterface | null>(null);
+const isLoading = ref(false);
 
 const { handleSubmit, resetField, errors } = useForm({
     initialValues: { tagName: "" },
@@ -53,19 +54,26 @@ const hideDialog = (): void => {
     intialTag.value = null;
     resetField("tagName");
 };
-
+const toast = useToast();
 const onSubmit = handleSubmit(async (): Promise<void> => {
     if (!intialTag.value) return;
     const tagData: TagInterface = {
         id: intialTag.value.id,
         tagName: tagName.value,
     };
+    isLoading.value = true;
     const response = await editTag(tagData);
+    isLoading.value = false;
     if (response.success) {
-        props.onSuccessCb(tagData);
-        hideDialog();
+        toast.success("The tag created successfully!", {
+            timeout: 1500,
+            onClose: () => {
+                props.onSuccessCb(tagData);
+                hideDialog();
+            },
+        });
     } else {
-        console.log(response.message);
+        toast.error(response.message);
     }
 });
 
