@@ -1,7 +1,6 @@
 <template>
     <div class="admin-tags-view">
         <h1 class="admin-view-title">Manage tags</h1>
-
         <div class="utils-bar">
             <CreateBtn btn-text="Add tag" @click="createTagDialogRef?.showDialog" />
         </div>
@@ -90,8 +89,12 @@ onMounted(async (): Promise<void> => {
 
 <style lang="scss" scoped>
 .admin-tags-view {
+    height: 100dvh;
+    overflow-y: auto;
     .tags-content-block {
-        display: grid;
+        .tags-list {
+            display: grid;
+        }
     }
     .tags-content-block,
     .utils-bar {

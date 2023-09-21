@@ -41,10 +41,6 @@ provide("createTagDialogRef", createTagDialogRef);
             padding: 1rem 1rem 1rem 1.3rem;
             min-width: 240px;
         }
-
-        .admin-view-title {
-            white-space: nowrap;
-        }
     }
 }
 </style>
