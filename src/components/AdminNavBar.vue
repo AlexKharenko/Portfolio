@@ -34,17 +34,6 @@
                 </button>
             </li>
             <li class="nav-bar-admin-list-item links">
-                <RouterLink class="list-item-link" to="/admin/skills">
-                    <div class="list-item-icon">
-                        <SkillsIcon />
-                    </div>
-                    <span class="list-item-title">Skills</span>
-                </RouterLink>
-                <button class="add-btn">
-                    <PlusIcon />
-                </button>
-            </li>
-            <li class="nav-bar-admin-list-item links">
                 <RouterLink class="list-item-link" to="/admin/experience">
                     <div class="list-item-icon">
                         <ExperienceIcon />
@@ -114,7 +103,6 @@ import ArrowIcon from "./icons/AdminPanel/ArrowIcon.vue";
 import FolderIcon from "./icons/AdminPanel/FolderIcon.vue";
 import MessageIcon from "./icons/AdminPanel/MessageIcon.vue";
 import ExperienceIcon from "./icons/AdminPanel/ExperienceIcon.vue";
-import SkillsIcon from "./icons/AdminPanel/SkillsIcon.vue";
 import DashBoardIcon from "./icons/AdminPanel/DashBoardIcon.vue";
 
 import type CreateTagDialog from "@/components/dialogs/tag/CreateTagDialog.vue";
