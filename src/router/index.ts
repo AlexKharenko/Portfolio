@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, type RouteLocationNormalized } from "vue-router";
-// import HomeView from "../views/HomeView.vue";
 import { handleGetPageStatus, requiresLoading, setTitle } from "@/utils/router.utils";
 
 const router = createRouter({
@@ -44,7 +43,7 @@ const router = createRouter({
                     path: "tags",
                     name: "Tags | Admin Dashboard",
                     meta: {
-                        title: "Admin Dashboard",
+                        title: "Tags | Admin Dashboard",
                     },
                     component: () => import("../views/AdminNestedViews/TagsView.vue"),
                 },
