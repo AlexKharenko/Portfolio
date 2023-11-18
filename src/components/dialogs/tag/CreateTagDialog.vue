@@ -15,7 +15,7 @@ import { ref } from "vue";
 import { CustomDialog } from "vue-dialog-library";
 import CustomDialogHeader from "@/components/dialogs/utils/CustomDialogHeader.vue";
 import type { TagCreateInterface, TagInterface } from "@/interfaces/tag.interface";
-import { createTag } from "@/utils/firebase-calls/tags.calls";
+import { createTag } from "@/utils/firebase-calls/tag.calls";
 import { useDialogEventsStore } from "@/stores/dialogEvents.store";
 import { useRoute } from "vue-router";
 import { useToast } from "vue-toastification";
@@ -57,7 +57,10 @@ const onSubmit = handleSubmit(async (): Promise<void> => {
     const response = await createTag(tagData);
     isLoading.value = false;
     if (response.success) {
-        if (router.name === "Tags | Admin Dashboard") {
+        if (
+            router.name === "Tags | Admin Dashboard" ||
+            router.name === "Create Project | Admin Dashboard"
+        ) {
             const tag: TagInterface = {
                 id: response.id,
                 ...tagData,

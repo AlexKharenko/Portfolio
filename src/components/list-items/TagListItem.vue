@@ -27,7 +27,7 @@ import TrashIcon from "@/components/icons/AdminPanel/TrashIcon.vue";
 import TagIcon from "@/components/icons/AdminPanel/TagIcon.vue";
 import FolderIcon from "../icons/AdminPanel/FolderIcon.vue";
 import type { TagInterface } from "@/interfaces/tag.interface";
-import { deleteTag } from "@/utils/firebase-calls/tags.calls";
+import { deleteTag } from "@/utils/firebase-calls/tag.calls";
 import type { ConfirmDialog } from "vue-dialog-library";
 import { inject, type Ref } from "vue";
 

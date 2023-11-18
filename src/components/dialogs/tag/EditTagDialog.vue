@@ -15,7 +15,7 @@ import { ref } from "vue";
 import { CustomDialog } from "vue-dialog-library";
 import type { TagInterface } from "@/interfaces/tag.interface";
 
-import { editTag } from "@/utils/firebase-calls/tags.calls";
+import { editTag } from "@/utils/firebase-calls/tag.calls";
 
 import CustomDialogHeader from "@/components/dialogs/utils/CustomDialogHeader.vue";
 import DialogInput from "../utils/DialogInput.vue";

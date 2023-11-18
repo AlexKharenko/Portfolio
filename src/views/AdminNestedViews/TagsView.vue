@@ -27,18 +27,20 @@ import { type Ref, inject, onMounted, ref, watch } from "vue";
 import type { TagInterface } from "@/interfaces/tag.interface";
 
 import { useDialogEventsStore } from "@/stores/dialogEvents.store";
-import { getTags } from "@/utils/firebase-calls/tags.calls";
+import { getTags } from "@/utils/firebase-calls/tag.calls";
 
 import TagListItem from "@/components/list-items/TagListItem.vue";
 
 import type CreateTagDialog from "@/components/dialogs/tag/CreateTagDialog.vue";
 import EditTagDialog from "@/components/dialogs/tag/EditTagDialog.vue";
 import CreateBtn from "@/components/buttons/admin/CreateBtn.vue";
+import { useToast } from "vue-toastification";
 
 const createTagDialogRef = inject<Ref<InstanceType<typeof CreateTagDialog>>>("createTagDialogRef");
 const editTagDialogRef = ref<InstanceType<typeof EditTagDialog>>();
 
 const tags = ref<TagInterface[]>([]);
+const toast = useToast();
 
 const addTagLocal = (tag: TagInterface): void => {
     tags.value.unshift(tag);
@@ -82,7 +84,7 @@ onMounted(async (): Promise<void> => {
     const response = await getTags();
     if (response.success) tags.value = response.data;
     else {
-        console.log(response.message);
+        toast.error(response.message);
     }
 });
 </script>
